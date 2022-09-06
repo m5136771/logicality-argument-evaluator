@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LogiCalc: Argument Evaluator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="head-title">LogiCalc</h1>
+        <h2 class="head-subtitle">Logical Argument Evaluator</h2>
+        <hr>
+    </div>
+
+    <div class="form">
+        <form>
+            <!-- <div class="argument__q-operators">
+                <select name="quantification" id="operators">
+                    <option value="null"></option>
+                    <option value="fAll">For All</option>
+                    <option value="fAny">For Any</option>
+                    <option value="fEach">For Each</option>
+                </select><br><br>                
+            </div> -->
+
+            <!-- <div class="p1__q-operators">
+                <select name="quantification" id="operators">
+                    <option value="null"></option>
+                    <option value="all">All</option>
+                    <option value="any">Any</option>
+                    <option value="each">Each</option>
+                </select>
+            </div> -->
+
+            <!-- <div class="p1__text-1">
+                <label for="firstPremiseText1">1A = </label>
+                <textarea id="firstPremiseText1" name="firstPremiseText1">it's raining</textarea><br><br>
+                
+                <div class="p1__text-2">
+                    <label for="firstPremiseText2">1B = </label>
+                    <textarea id="firstPremiseText2" name="firstPremiseText2">it's cloudy.</textarea><br><br>
+                </div>
+            </div> -->
+
+            <!-- <input type="radio" id="p1true" name="p1true" value="True">
+            <label for="html">This statement is known to be true.</label><br>
+            <input type="radio" id="p1false" name="p1false" value="False">
+            <label for="css">This statement is known to be false.</label><br>
+            <input type="radio" id="p1unsure" name="p1unsure" value="Unsure">
+            <label for="javascript">This statement is known to be unsure.</label><br><br>
+
+            <label for="p1s1text">Support 1:</label>
+            <input type="url" id="p1s1text" name="p1s1text"><br><br>
+
+            <label for="p1s2text">Support 2:</label>
+            <input type="url" id="p1s2text" name="p1s2text"> -->
+            
+            <!-- <div class="p2__header">
+                <h4>Premise 2</h4>
+            </div>
+
+            <div class="p2__logic-operators">
+                <select name="operators" id="operators">
+                    <option value="null"></option>
+                    <option value="implication">IF</option>
+                    <option value="equivalence">IFF</option>
+                    <option value="negation">NOT</option>
+                    <option value="conjunction">AND</option>
+                    <option value="logical_disjunction">OR</option>
+                    <option value="exclusive_disjunction">EITHER</option>
+                </select>
+            </div>
+
+            <div class="p2__q-operators">
+                <select name="quantification" id="operators">
+                    <option value="null"></option>
+                    <option value="all">All</option>
+                    <option value="any">Any</option>
+                    <option value="each">Each</option>
+                </select>
+            </div>
+
+            <div class="p2__text-1">
+                <label for="secondPremiseText1">2 = </label>
+                <textarea id="secondPremiseText1" name="secondPremiseText1">it's raining</textarea><br><br>
+            </div> -->
+            
+            <!-- <input type="radio" id="p1true" name="p1true" value="True">
+            <label for="html">This statement is known to be true.</label><br>
+            <input type="radio" id="p1false" name="p1false" value="False">
+            <label for="css">This statement is known to be false.</label><br>
+            <input type="radio" id="p1unsure" name="p1unsure" value="Unsure">
+            <label for="javascript">This statement is known to be unsure.</label><br><br>
+
+            <label for="p1s1text">Support 1:</label>
+            <input type="url" id="p1s1text" name="p1s1text"><br><br>
+
+            <label for="p1s2text">Support 2:</label>
+            <input type="url" id="p1s2text" name="p1s2text"> -->
+
+            <!-- <label for="conclusion">Conclusion:</label>
+            <input id="conclusion" name="conclusion" value="It's cloudy."><br><br> -->
+        </form>
+
+        <form class="form form--premises">
+            Premises:<br>
+
+            <select id="operator-dd1"
+                    class="form__operator">
+                <option value="null"></option>
+                <option value="given_truth">GIVEN</option> <!-- Needs to trigger 'simple premise statement of truth' -->
+                <option value="implication1">IF</option> <!-- Needs to trigger 'antecedant' -->
+                <option value="implication2">THEN</option> <!-- Needs to trigger 'consequent' -->
+                <option value="equivalence">IFF</option>
+                <option value="negation">NOT</option>
+                <option value="conjunction">AND</option>
+                <option value="logical_disjunction">OR</option>
+                <option value="exclusive_disjunction">EITHER</option>
+                <option value="conclusion">THEREFORE</option> <!-- Needs to trigger 'conclusion' -->
+            </select>
+
+            <div>
+                Premise:
+                <select id="firstPremise"
+                        class="form__premise-symbol">
+                    <option value="null"></option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="P">P</option>
+                    <option value="Q">Q</option>
+            </div>
+
+            <label for="aCheckbox"> True?</label><br>
+            <input type="checkbox"
+                    name="aCheckbox"
+                    id="aChecked"
+                    class="premise-isTrue"
+                    onclick="HandleA()">
+            
+            <div id="premiseB">
+                <select id="operator-dd2"
+                    class="form__operator">
+                <option value="null"></option>
+                <option value="given_truth">GIVEN</option> <!-- Needs to trigger 'simple premise statement of truth' -->
+                <option value="implication1">IF</option> <!-- Needs to trigger 'antecedant' -->
+                <option value="implication2">THEN</option> <!-- Needs to trigger 'consequent' -->
+                <option value="equivalence">IFF</option>
+                <option value="negation">NOT</option>
+                <option value="conjunction">AND</option>
+                <option value="logical_disjunction">OR</option>
+                <option value="exclusive_disjunction">EITHER</option>
+                <option value="conclusion">THEREFORE</option> <!-- Needs to trigger 'conclusion' -->
+                </select>
+
+                <div>
+                    Premise:
+                    <select id="secondPremise"
+                            class="form__premise-symbol">
+                        <option value="null"></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                </div>
+
+                <label for="bCheckbox"> True?</label><br>
+                <input type="checkbox" name="bCheckbox" id="bChecked" class="premise-isTrue" onclick="HandleB()">
+
+            <div id="premiseC">
+                <select id="operator-dd3"
+                        class="form__operator">
+                    <option value="null"></option>
+                    <option value="given_truth">GIVEN</option> <!-- Needs to trigger 'simple premise statement of truth' -->
+                    <option value="implication1">IF</option> <!-- Needs to trigger 'antecedant' -->
+                    <option value="implication2">THEN</option> <!-- Needs to trigger 'consequent' -->
+                    <option value="equivalence">IFF</option>
+                    <option value="negation">NOT</option>
+                    <option value="conjunction">AND</option>
+                    <option value="logical_disjunction">OR</option>
+                    <option value="exclusive_disjunction">EITHER</option>
+                    <option value="conclusion">THEREFORE</option> <!-- Needs to trigger 'conclusion' -->
+                </select>
+
+                <div>
+                    Premise:
+                    <select id="thirdPremise"
+                            class="form__premise-symbol">
+                        <option value="null"></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                </div>
+
+                <label for="cCheckbox"> True?</label><br>
+                <input type="checkbox" name="cCheckbox" id="cChecked" class="premise-isTrue" onclick="HandleC()"><br>
+            </div>
+
+            <div id="premiseD">
+                <select id="operator-dd4"
+                        class="form__operator">
+                    <option value="null"></option>
+                    <option value="given_truth">GIVEN</option> <!-- Needs to trigger 'simple premise statement of truth' -->
+                    <option value="implication1">IF</option> <!-- Needs to trigger 'antecedant' -->
+                    <option value="implication2">THEN</option> <!-- Needs to trigger 'consequent' -->
+                    <option value="equivalence">IFF</option>
+                    <option value="negation">NOT</option>
+                    <option value="conjunction">AND</option>
+                    <option value="logical_disjunction">OR</option>
+                    <option value="exclusive_disjunction">EITHER</option>
+                    <option value="conclusion">THEREFORE</option> <!-- Needs to trigger 'conclusion' -->
+                </select>
+
+                <div>
+                    Premise:
+                    <select id="fourthPremise"
+                            class="form__premise-symbol">
+                        <option value="null"></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                </div>
+
+                <label for="dCheckbox"> True?</label><br>
+                <input type="checkbox" name="dCheckbox" id="dChecked" class="premise-isTrue" onclick="HandleD()"><br>
+            </div>
+
+
+
+            <hr>
+            <input type="reset" value="Reset">
+            <input type="button" id="btn-submit" name="btnSubmit" value="Check Validity">
+        </form>
+
+        <div id="testing">
+            <input type="button" value="Test" onclick="buildArgument()">
+            <input type="button" value="Test2" onclick="hasDuplicates(activePremises)">
+
+        </div>
+        
+        <!-- <div id="answer">
+            <div id="a_true">
+                A is true?: 
+            </div>
+
+            <div id="b_true">
+                B is true?: 
+            </div>
+
+            <div id="c_true">
+                C is true?: 
+            </div>
+
+            <input type="button" name="btnNegate" value="Negation" onclick="HandleNegation()">
+
+        </div>  -->  
+    </div>
+
+
+
+<!--     <footer>
+        <p>&copy; Copyright 2022 <a href="http://github.com/midipaolo">Michael DiPaolo</a>, all rights reserved.</p>
+
+        <p>
+            <a href="http://github.com/midipaolo">GitHub Repo</a> |
+            <a href="">Patreon</a> |
+            <a href="">Linktr.ee</a>
+        </p>
+    </footer> -->
+
+    <script src="test.js"></script>
+    <script src="index.js"></script>
+    <script src="utils/handlers.js"></script>
+    <hr>
+    <h3>The Answer</h3>
+
+</body>
+</html>

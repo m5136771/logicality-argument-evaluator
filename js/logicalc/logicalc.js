@@ -1,0 +1,1 @@
+// Takes Truth Table input along with input of truthfulness for each premise and compares against truth table to return validity
